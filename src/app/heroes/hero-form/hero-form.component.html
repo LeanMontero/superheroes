@@ -1,0 +1,25 @@
+<form [formGroup]="heroForm" class="flex justify-content-center">
+    <div mat-dialog-content class="flex flex-column align-items-center gap-3">
+      <div>
+        <p mat-dialog-title>{{ data.id ? "Editar Héroe" : "Agregar Héroe" }}</p>
+      </div>
+      <div class="w-full">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" placeholder="Nombre" appUppercase>
+          <mat-error *ngIf="heroForm.get('name')?.invalid">Nombre es requerido</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="w-full">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Universo</mat-label>
+          <input matInput formControlName="universe" placeholder="Universo" appUppercase>
+          <mat-error *ngIf="heroForm.get('universe')?.invalid">Universo es requerido</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div mat-dialog-actions class="flex justify-content-between">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button color="primary" (click)="onSave()">Guardar</button>
+  </div>
